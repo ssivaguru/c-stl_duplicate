@@ -1,0 +1,30 @@
+{
+  "files": {
+    "vector/vector.cpp": [
+      {
+        "id": "7f5477ec-0e6a-4c1a-a673-b52cec3f4698",
+        "line": 1,
+        "version": 714,
+        "index": 0
+      },
+      {
+        "id": "ec5f49cb-394c-4b7a-af1a-87119c9bdcc3",
+        "line": 23,
+        "version": 731,
+        "index": 337
+      },
+      {
+        "id": "d9d515d5-231e-4698-84c1-1a0ed03dee7e",
+        "line": 26,
+        "version": 731,
+        "index": 430
+      },
+      {
+        "id": "5546df87-3e37-423d-9cfd-856938a2cc58",
+        "line": 28,
+        "version": 731,
+        "index": 438
+      }
+    ]
+  }
+}
