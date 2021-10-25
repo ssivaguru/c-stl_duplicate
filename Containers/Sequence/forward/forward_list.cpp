@@ -1,57 +1,74 @@
 #include "forward_list.h"
 
-forward_list::forward_list() {
+
+template <typename T>
+forward_list<T>::forward_list() {
   this->head = NULL;
   this->current = NULL;
   size = 0;
 }
 
-void* forward_list::initilizeList() {
+template <typename T>
+void* forward_list<T>::initilizeList() {
   return (malloc(sizeof(_linkedList)));
 }
 
-forward_list::~forward_list() {
+template <typename T>
+forward_list<T>::~forward_list() {
 
 }
 
-bool forward_list::push_front(int n) {
+template <typename T>
+bool forward_list<T>::push_front(T n) {
   _linkedList *tmp = new _linkedList();
   tmp->val = n;
+  tmp->next = NULL;
+
   if(size == 0) {
     head = tmp;
+    current = head;
+  } else {
+    current->next =tmp;
+    current = tmp;
   }
-  current =tmp;
+
   size++;
   return true;
 }
 
-int forward_list::pop_front() {
+template <typename T>
+T forward_list<T>::pop_front() {
+ 
   if (size == 0)
       return -1;
   
-  int returnVal = current->val;
-  removeIndex(size);
-
+  T returnVal = current->val;
+  
+  removeLast();
+  size--;
   return returnVal;
 }
 
 
-void forward_list::removeIndex(int index) {
-  if (index == 1)
+template <typename T>
+void forward_list<T>::removeLast() {
+  if (size == 1)
   {
     delete head;
     head = NULL;
     current = NULL;
+    return;
   }
 
-  _linkedList *tmp = head;
-  for (int i=1; i<index-1; i++) {
-
+  _linkedList *first = head;
+  _linkedList *second = head->next;
+  while (second->next != NULL) {
+    first = first->next;
+    second = second->next;
   }
 
-  _linkedList *next = tmp->next;
+  current = first;
+  first->next = NULL;
 
-  tmp->next = NULL;
-
-  delete next;
+  delete second;
 }

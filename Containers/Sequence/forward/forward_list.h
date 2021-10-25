@@ -1,3 +1,6 @@
+#ifndef _FORWARD_LIST
+#define _FORWARD_LIST
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,19 +8,18 @@ typedef struct linkedList {
   int val;
 }_linkedList;
 
-
-class forward_list {
+template <typename T> class forward_list {
 public:
       forward_list();
       ~forward_list();
-      int front();
-      bool push_front(int n);
-      int pop_front();
+      T front();
+      bool push_front(T n);
+      T pop_front();
 private:
     void* initilizeList();
-    void removeIndex(int index);
+    void removeLast();
     typedef struct linkedList {
-      int val;
+      T val;
       linkedList *next;
     }_linkedList;
 
@@ -25,3 +27,7 @@ private:
     _linkedList *current;
     int size;
 };
+
+#include "forward_list.cpp"
+
+#endif
