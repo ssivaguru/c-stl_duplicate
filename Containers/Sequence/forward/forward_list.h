@@ -15,6 +15,9 @@ public:
       T front();
       bool push_front(T n);
       T pop_front();
+      void insert_after(T val, int n);
+      void erase_after();
+      int size();
 private:
     void* initilizeList();
     void removeLast();
@@ -25,7 +28,7 @@ private:
 
     _linkedList *head;
     _linkedList *current;
-    int size;
+    int length;
 };
 
 #include "forward_list.cpp"

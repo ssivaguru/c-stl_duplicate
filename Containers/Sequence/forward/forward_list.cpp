@@ -5,7 +5,7 @@ template <typename T>
 forward_list<T>::forward_list() {
   this->head = NULL;
   this->current = NULL;
-  size = 0;
+  length = 0;
 }
 
 template <typename T>
@@ -24,7 +24,7 @@ bool forward_list<T>::push_front(T n) {
   tmp->val = n;
   tmp->next = NULL;
 
-  if(size == 0) {
+  if(length == 0) {
     head = tmp;
     current = head;
   } else {
@@ -32,27 +32,27 @@ bool forward_list<T>::push_front(T n) {
     current = tmp;
   }
 
-  size++;
+  length++;
   return true;
 }
 
 template <typename T>
 T forward_list<T>::pop_front() {
  
-  if (size == 0)
+  if (length == 0)
       return -1;
   
   T returnVal = current->val;
   
   removeLast();
-  size--;
+  length--;
   return returnVal;
 }
 
 
 template <typename T>
 void forward_list<T>::removeLast() {
-  if (size == 1)
+  if (length == 1)
   {
     delete head;
     head = NULL;
@@ -71,4 +71,39 @@ void forward_list<T>::removeLast() {
   first->next = NULL;
 
   delete second;
+}
+
+template <typename T>
+void forward_list<T>::insert_after(T val, int n) {
+
+  //cannot insert
+  if (n > length) {
+    return;
+  } else if (n == length) {
+    push_front(n);
+    return;
+  }
+
+  //now the value is in between
+  _linkedList *second = head;
+  int index = 1;
+  while (index != n) {
+    second = second->next;
+    index++;
+  }
+}
+
+template <typename T>
+void forward_list<T>::erase_after(){
+  
+}
+
+template <typename T>
+T forward_list<T>::front(){
+  return current->val;
+}
+
+template <typename T>
+int forward_list<T>::size() {
+  return length;
 }
