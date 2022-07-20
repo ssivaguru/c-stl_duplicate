@@ -1,26 +1,20 @@
-#include "Containers/Sequence/forward/forward_list.h"
+#include "Containers/Sequence/vector/vector.h"
 #include <iostream>
 
 
 using namespace std;
 
 int main() {
-  forward_list<int> *list = new forward_list<int>();
+  vector<vector<int>> out;
 
-  list->push_front(1);
-  list->push_front(2);
-  list->push_front(3);
-  
+  out.push_back(20);
+  out.push_back(21);
+  out.push_back(33);
+  out.push_back(100);
 
-  cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
-    list->push_front(1);
-  list->push_front(2);
-  list->push_front(3);
-    cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
-  cout << list->pop_front() << endl;
+/*
+  for (int i=0; i<out.length(); i++) {
+    cout << out.pop_back() << "---- " << out.length() << endl;
+  }
+*/
 }

@@ -2,23 +2,23 @@
 
 
 
-vector::vector(int n) {
+template<typename T> vector<T>::vector(int n) {
   isFixed = true;
   size = 0;
   container = n;
-  elementArray = (int *) malloc(sizeof(int) * size);
+  elementArray = (T *) malloc(sizeof(T) * size);
 }
 
 
-vector::vector() {
+template<typename T>vector<T>::vector() {
   isFixed = false;
-  elementArray = (int *) malloc(sizeof(int) * 1);;
+  elementArray = (T *) malloc(sizeof(T) * 1);;
   size = 0;
   container = 1;
 }
 
 
-bool vector::push_back(int n) {
+template<typename T> bool vector<T>::push_back(T n) {
   //then reallocate the array
   if (container == size) {
     if (!reallocateVector(container * 2)) {
@@ -31,7 +31,7 @@ bool vector::push_back(int n) {
   return true;
 }
 
-int vector::pop_back() {
+template<typename T> T vector<T>::pop_back() {
   if (size == 0)
     return -1;
   //reduce memroy
@@ -44,13 +44,13 @@ int vector::pop_back() {
   return returnVal;
 }
 
-int vector::capacity() {
+template<typename T> int vector<T>::capacity() {
   return container;
 }
 
-bool vector::reallocateVector(int length) {
+template<typename T> bool vector<T>::reallocateVector(int length) {
   
-  int *newBuffer = (int *)realloc(elementArray, length);
+  T *newBuffer = (T *)realloc(elementArray, length);
 
   if (newBuffer == NULL) {
     return false;
@@ -62,6 +62,10 @@ bool vector::reallocateVector(int length) {
   return true;
 }
 
-int vector::length() {
+template<typename T> int vector<T>::length() {
   return size+1;
+}
+
+template<typename T> T vector<T>:: at(int index){
+  return elementArray[index];
 }
