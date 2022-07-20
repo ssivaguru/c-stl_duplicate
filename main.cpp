@@ -1,20 +1,17 @@
-#include "Containers/Sequence/vector/vector.h"
+#include "Algorithm/Algo.h"
 #include <iostream>
-
 
 using namespace std;
 
-int main() {
-  vector<vector<int>> out;
+int main()
+{
+  int arr[] = {5, 2, 5, 9, 7, 8, 1234, 4};
+  int size = sizeof(arr) / sizeof(arr[0]);
 
-  out.push_back(20);
-  out.push_back(21);
-  out.push_back(33);
-  out.push_back(100);
+  selectionSort(arr, arr + size);
 
-/*
-  for (int i=0; i<out.length(); i++) {
-    cout << out.pop_back() << "---- " << out.length() << endl;
+  for (int i = 0; i < size; i++)
+  {
+    cout << arr[i] << endl;
   }
-*/
 }
